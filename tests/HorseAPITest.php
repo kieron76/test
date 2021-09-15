@@ -53,7 +53,7 @@ class HorseAPITest extends TestCase
         $response->assertStatus(200);
         $response->assertSee("Jeremy");
         
-        $response = $this->get('/api/v1/horses');
+        $response = $this->get('/api/v1/horse');
 
         $response->assertStatus(200);
         $response->assertJson(fn (AssertableJson $json) =>
@@ -65,7 +65,7 @@ class HorseAPITest extends TestCase
         $response->assertStatus(200);
         $response->assertSee("OK");
 
-        $response = $this->get('/api/v1/horses');
+        $response = $this->get('/api/v1/horse');
 
         $response->assertStatus(200);
         $response->assertJson(fn (AssertableJson $json) =>

@@ -21,6 +21,7 @@ class RaceAPITest extends TestCase
             'handicap' => 1,
             'showcase' => 0,
             'race_status' => 'Abandoned',
+            'meeting_id' => 0,
         ]);
 
         $response->assertStatus(200);
@@ -33,6 +34,7 @@ class RaceAPITest extends TestCase
             'handicap' => 1,
             'showcase' => 0,
             'race_status' => 'Back On',
+            'meeting_id' => 0,
         ]);
 
         $response->assertStatus(200);
@@ -43,7 +45,7 @@ class RaceAPITest extends TestCase
         $response->assertStatus(200);
         $response->assertSee("Back On");
         
-        $response = $this->get('/api/v1/races');
+        $response = $this->get('/api/v1/race');
 
         $response->assertStatus(200);
         $response->assertJson(fn (AssertableJson $json) =>
@@ -55,7 +57,7 @@ class RaceAPITest extends TestCase
         $response->assertStatus(200);
         $response->assertSee("OK");
 
-        $response = $this->get('/api/v1/races');
+        $response = $this->get('/api/v1/race');
 
         $response->assertStatus(200);
         $response->assertJson(fn (AssertableJson $json) =>

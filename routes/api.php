@@ -1,10 +1,10 @@
 <?php
 
-use App\Controllers\HorseController;
-use App\Controllers\RaceController;
+use App\Http\Api\Controllers\HorseController;
+use App\Http\Api\Controllers\RaceController;
 
 Route::middleware(['api'])->group(function () {
-    Route::group(['prefix' => 'api/v' . \Config::get('version', 1)], function () {
+    Route::group(['prefix' => 'v1'], function () {
         Route::group(['prefix' => 'horse'], function() {
             Route::get('/', [HorseController::class, 'getHorses']);
             Route::get('/{horse}', [HorseController::class, 'get']);
@@ -18,7 +18,7 @@ Route::middleware(['api'])->group(function () {
             Route::get('/{race}', [RaceController::class, 'get']);
             Route::post('/', [RaceController::class, 'post']);
             Route::put('/{race}', [RaceController::class, 'put']);
-            Route::delete('/', [RaceController::class, 'delete']);
+            Route::delete('/{race}', [RaceController::class, 'delete']);
         });
     });
 });
