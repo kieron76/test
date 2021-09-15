@@ -1,0 +1,39 @@
+version: "3.7"
+networks:
+  horse-racing-db:
+    name: horse-racing-db
+  horse-racing-backend:
+  frontend:
+services:
+  nginx:
+    container_name: horse-racing-nginx
+    build: './nginx'
+    restart: always
+    ports:
+      - 101:80
+      - 463:443
+    networks:
+      - frontend
+      - horse-racing-backend
+      - horse-racing-db
+    depends_on:
+      - php
+    volumes:
+      - ./:/var/www/html
+  php:
+    container_name: horse-racing-php
+    build: './php'
+    restart: always
+    networks:
+      - horse-racing-backend
+      - horse-racing-db
+    volumes:
+      - ./:/var/www/html
+  mysql:
+    container_name: horse-racing_mysql
+    build: './mysql'
+    restart: always
+    networks:
+      - horse-racing-db
+    volumes:
+      - ../db:/var/lib/mysql
