@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use Illuminate\Support\Facades\File;
-use Classes\RaceParser;
+use App\Classes\RaceParser;
 
 class RaceParserTest extends TestCase
 {
