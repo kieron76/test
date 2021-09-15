@@ -30,7 +30,7 @@ services:
     volumes:
       - ./:/var/www/html
   mysql:
-    container_name: horse-racing_mysql
+    container_name: horse-racing-mysql
     build: './mysql'
     restart: always
     networks:
